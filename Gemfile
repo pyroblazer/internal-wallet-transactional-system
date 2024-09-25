@@ -49,6 +49,12 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "factory_bot_rails", "~> 6.4", ">= 6.4.3"
+  gem "rspec-rails", "~> 7.0", ">= 7.0.1"
+  gem "shoulda-matchers", "~> 6.4", ">= 6.4.0"
+  gem "dotenv-rails", "~> 3.1", ">= 3.1.4"
+  gem "faker", "~> 3.4", ">= 3.4.2"
 end
 
 group :development do
@@ -61,3 +67,11 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "bcrypt", "~> 3.1", ">= 3.1.20"
+gem "jwt", "~> 2.9", ">= 2.9.0"
+gem "rack-cors", "~> 2.0", ">= 2.0.2"
+gem "active_model_serializers", "~> 0.10.14"
+
+gem "factory_bot", "~> 6.5"
+gem "pg", "~> 1.5", ">= 1.5.8"
