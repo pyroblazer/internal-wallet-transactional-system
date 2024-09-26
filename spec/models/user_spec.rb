@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-require 'rails_helper'
-
 RSpec.describe User, type: :model do
   before do
     # Create an existing user to test the uniqueness validation

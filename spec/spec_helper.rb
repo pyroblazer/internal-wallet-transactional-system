@@ -13,7 +13,7 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-# 
+#
 require 'factory_bot_rails'
 
 RSpec.configure do |config|
@@ -99,4 +99,17 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
   config.include FactoryBot::Syntax::Methods
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
 end
