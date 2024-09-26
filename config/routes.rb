@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   post "/user", to: "user#create"
   post "/auth/login", to: "auth#login"
+  post "/auth/logout", to: "auth#logout"
 end

@@ -37,4 +37,14 @@ RSpec.describe 'Auth', type: :request do
       end
     end
   end
+
+  describe 'POST /auth/logout' do
+    it 'logs out successfully' do
+      post '/auth/logout'
+
+      expect(response).to have_http_status(:ok)
+      json = JSON.parse(response.body)
+      expect(json['message']).to eq('Logged out successfully')
+    end
+  end
 end

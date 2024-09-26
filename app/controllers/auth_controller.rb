@@ -1,5 +1,5 @@
 class AuthController < ApplicationController
-  skip_before_action :authorized, only: [ :login ]
+  skip_before_action :authorized, only: [ :login, :logout ]
   rescue_from ActiveRecord::RecordNotFound, with: :handle_invalid_credentials
 
   def login
@@ -13,6 +13,10 @@ class AuthController < ApplicationController
     else
       handle_invalid_credentials
     end
+  end
+
+  def logout
+    render json: { message: "Logged out successfully" }, status: :ok
   end
 
   private
