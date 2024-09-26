@@ -14,4 +14,13 @@ Rails.application.routes.draw do
   post "/users", to: "users#create"
   post "/auth/login", to: "auth#login"
   post "/auth/logout", to: "auth#logout"
+
+  resources :users, only: [ :create ] do
+    resource :stocks do
+      post "invest"
+      post "update_price"
+    end
+  end
+
+  resources :stocks, only: [ :index ]
 end

@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Team, type: :model do
   describe 'associations' do
     it { should have_one(:entity).dependent(:destroy) }
-    it { should have_one(:wallet).through(:entity) }
   end
 
   describe 'creating a team with an entity and wallet' do

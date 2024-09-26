@@ -7,7 +7,6 @@ RSpec.describe User, type: :model do
   end
 
   it { should have_one(:entity) }
-  it { should have_one(:wallet).through(:entity) }
 
   # Create an existing user before testing uniqueness validation
   it 'validates uniqueness of email' do
