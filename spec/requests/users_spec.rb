@@ -7,7 +7,7 @@ RSpec.describe 'User', type: :request do
 
     context 'with valid parameters' do
       it 'creates a new user and returns a token' do
-        post '/user', params: valid_params
+        post '/users', params: valid_params
 
         expect(response).to have_http_status(:created)
         json = JSON.parse(response.body)
@@ -18,7 +18,7 @@ RSpec.describe 'User', type: :request do
 
     context 'with invalid parameters' do
       it 'returns validation errors' do
-        post '/user', params: invalid_params
+        post '/users', params: invalid_params
 
         expect(response).to have_http_status(:unprocessable_entity)
         json = JSON.parse(response.body)

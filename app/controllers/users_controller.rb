@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   skip_before_action :authorized, only: [ :create ]
   rescue_from ActiveRecord::RecordInvalid, with: :handle_record_invalid
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
