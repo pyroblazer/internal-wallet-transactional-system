@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :team do
     name { Faker::Team.name }
-    team_lead { Faker::Name.name }
-    team_size { rand(1..10) }
+    size { rand(1..10) }
+
+    association :owner, factory: :user
 
     after(:create) do |team|
       create(:entity, entity: team)

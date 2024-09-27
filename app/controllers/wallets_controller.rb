@@ -70,7 +70,7 @@ class WalletsController < ApplicationController
       authorize_access(@walletable.id)
     elsif params[:team_id]
       @walletable = Team.find(params[:team_id])
-      authorize_access(@walletable.team_lead)
+      authorize_access(@walletable.owner_id)
     end
   end
 

@@ -64,7 +64,7 @@ class StocksController < ApplicationController
       authorize_access(@walletable.id)
     elsif params[:team_id]
       @walletable = Team.find(params[:team_id])
-      authorize_access(@walletable.team_lead)
+      authorize_access(@walletable.owner_id)
     end
   end
 
@@ -92,7 +92,7 @@ class StocksController < ApplicationController
 
   def adjust_wallet_for_price_change(stock, old_price, new_price, investor_wallet, stock_wallet)
     invested_amount = stock.amount_invested(investor_wallet, stock_wallet)
-        
+
     if new_price > old_price
       profit = (new_price - old_price) * invested_amount
       create_transaction(stock_wallet, investor_wallet, profit)

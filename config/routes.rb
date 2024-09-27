@@ -27,5 +27,17 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :teams, only: [ :create ] do
+    resource :stocks do
+      post "invest"
+      post "update_price"
+    end
+    resource :wallets, only: [ :show ] do
+      post "deposit"
+      post "transfer"
+      resources :transactions, only: [ :index ]
+    end
+  end
+
   resources :stocks, only: [ :index ]
 end

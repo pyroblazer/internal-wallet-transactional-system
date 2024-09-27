@@ -32,10 +32,12 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_21_111022) do
 
   create_table "teams", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
-    t.string "team_lead"
-    t.integer "team_size"
+    t.uuid "owner_id"
+    t.integer "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_teams_on_name"
+    t.index ["owner_id"], name: "index_teams_on_owner_id"
   end
 
   create_table "transactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
