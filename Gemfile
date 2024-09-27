@@ -77,3 +77,7 @@ gem "factory_bot", "~> 6.5"
 gem "pg", "~> 1.5", ">= 1.5.8"
 gem "pry", "~> 0.14", ">= 0.14.2"
 gem "database_cleaner-active_record", "~> 2.2", ">= 2.2.0"
+gem "rails-erd"
+gem "ruby-graphviz"
+
+gem "latest_stock_price", path: "lib/latest_stock_price"

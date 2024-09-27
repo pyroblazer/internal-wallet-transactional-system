@@ -1,5 +1,5 @@
 class Stock < ApplicationRecord
-  has_one :entity, as: :entity
+  has_one :entity, as: :entity, dependent: :destroy
   has_one :wallet, through: :entity
 
   def amount_invested(investor_wallet, stock_wallet)

@@ -10,7 +10,7 @@ RSpec.describe ApplicationController, type: :controller do
   end
 
   let!(:user) { create(:user) }
-  let(:token) { JWT.encode({ user_id: user.id }, ENV["JWT_SECRET_KEY"]) }
+  let(:token) { JWT.encode({ user_id: user.id }, Rails.application.credentials.dig(:jwt, :secret_key)) }
 
   describe 'Authorization' do
     context 'with valid token' do
