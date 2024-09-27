@@ -9,7 +9,7 @@ RSpec.describe ApplicationController, type: :controller do
     end
   end
 
-  let(:user) { create(:user) }
+  let!(:user) { create(:user) }
   let(:token) { JWT.encode({ user_id: user.id }, ENV["JWT_SECRET_KEY"]) }
 
   describe 'Authorization' do

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Stocks", type: :request do
-  let(:user) { create(:user) }
-  let(:team) { create(:team) }
-  let(:stock) { create(:stock) }
+  let!(:user) { create(:user) }
+  let!(:team) { create(:team) }
+  let!(:stock) { create(:stock) }
   let!(:investor_wallet) { create(:wallet, walletable: user.entity, balance: 1000) }
   let!(:stock_wallet) { create(:wallet, walletable: stock.entity, balance: 0) }
   let(:token) { JWT.encode({ user_id: user.id }, ENV["JWT_SECRET_KEY"]) }

@@ -20,6 +20,11 @@ Rails.application.routes.draw do
       post "invest"
       post "update_price"
     end
+    resource :wallets, only: [ :show ] do
+      post "deposit"
+      post "transfer"
+      resources :transactions, only: [ :index ]
+    end
   end
 
   resources :stocks, only: [ :index ]

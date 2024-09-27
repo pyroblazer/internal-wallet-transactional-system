@@ -9,11 +9,11 @@ RSpec.describe Team, type: :model do
     it 'creates a team with a wallet and associated entity' do
       team = create(:team)
       entity = team.entity
-      wallet = create(:wallet, walletable: team)
+      wallet = create(:wallet, walletable: team.entity)
 
       expect(entity).to be_present
       expect(wallet).to be_present
-      expect(wallet.walletable).to eq(team)
+      expect(wallet.walletable).to eq(team.entity)
     end
   end
 end
