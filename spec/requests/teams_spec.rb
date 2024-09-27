@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Teams", type: :request do
   let(:user) { create(:user) }
   let(:valid_attributes) { { name: "New Team" } }
-  let(:token) { JWT.encode({ user_id: user.id }, ENV["JWT_SECRET_KEY"]) }
+  let(:token) { JWT.encode({ user_id: user.id }, Rails.application.credentials.dig(:jwt, :secret_key)) }
   let(:auth_headers) { { 'Authorization' => "Bearer #{token}" } }
 
   describe "POST /teams" do

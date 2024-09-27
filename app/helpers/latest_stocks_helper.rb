@@ -1,0 +1,2 @@
+module LatestStocksHelper
+end

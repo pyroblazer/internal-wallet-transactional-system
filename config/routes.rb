@@ -40,4 +40,6 @@ Rails.application.routes.draw do
   end
 
   resources :stocks, only: [ :index ]
+
+  get "/stocks/price_all", to: "latest_stocks#price_all"
 end

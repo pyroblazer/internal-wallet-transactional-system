@@ -5,7 +5,7 @@ RSpec.describe "Wallets", type: :request do
   let(:amount) { 100.0 }
 
   describe "Users resource" do
-    let(:token) { JWT.encode({ user_id: user.id }, ENV["JWT_SECRET_KEY"]) }
+    let(:token) { JWT.encode({ user_id: user.id }, Rails.application.credentials.dig(:jwt, :secret_key)) }
     let(:auth_headers) { { 'Authorization' => "Bearer #{token}" } }
     let!(:wallet) { create(:wallet, walletable: user.entity, balance: 100.0) }
 
@@ -109,7 +109,7 @@ RSpec.describe "Wallets", type: :request do
 
   describe "Teams resource" do
     let!(:team) { create(:team, owner: user) }
-    let(:token) { JWT.encode({ user_id: team.owner_id }, ENV["JWT_SECRET_KEY"]) }
+    let(:token) { JWT.encode({ user_id: team.owner_id }, Rails.application.credentials.dig(:jwt, :secret_key)) }
     let(:auth_headers) { { 'Authorization' => "Bearer #{token}" } }
     let!(:team_wallet) { create(:wallet, walletable: team.entity, balance: 100.0) }
 

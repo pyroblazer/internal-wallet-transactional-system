@@ -6,7 +6,7 @@ RSpec.describe "Transactions", type: :request do
   let!(:user_wallet) { create(:wallet, walletable: user.entity) }
   let!(:team_wallet) { create(:wallet, walletable: team.entity) }
 
-  let(:token) { JWT.encode({ user_id: user.id }, ENV["JWT_SECRET_KEY"]) }
+  let(:token) { JWT.encode({ user_id: user.id }, Rails.application.credentials.dig(:jwt, :secret_key)) }
   let(:auth_headers) { { 'Authorization' => "Bearer #{token}" } }
 
   describe "GET /users/:user_id/wallets/transactions" do
@@ -50,7 +50,7 @@ RSpec.describe "Transactions", type: :request do
     context "when team leader is unauthorized" do
       it "returns an unauthorized error" do
         unauthorized_user = create(:user)
-        unauthorized_token = JWT.encode({ user_id: unauthorized_user.id }, ENV["JWT_SECRET_KEY"])
+        unauthorized_token = JWT.encode({ user_id: unauthorized_user.id }, Rails.application.credentials.dig(:jwt, :secret_key))
         unauthorized_headers = { 'Authorization' => "Bearer #{unauthorized_token}" }
 
         get "/teams/#{team.id}/wallets/transactions", headers: unauthorized_headers

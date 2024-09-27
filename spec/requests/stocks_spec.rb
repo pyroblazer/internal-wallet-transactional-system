@@ -6,7 +6,7 @@ RSpec.describe "Stocks", type: :request do
   let!(:stock_wallet) { create(:wallet, walletable: stock.entity, balance: 0) }
 
   describe "GET /stocks" do
-    let(:token) { JWT.encode({ user_id: user.id }, ENV["JWT_SECRET_KEY"]) }
+    let(:token) { JWT.encode({ user_id: user.id }, Rails.application.credentials.dig(:jwt, :secret_key)) }
     let(:auth_headers) { { 'Authorization' => "Bearer #{token}" } }
 
     it "returns a list of stocks" do
@@ -17,7 +17,7 @@ RSpec.describe "Stocks", type: :request do
   end
 
   describe "Users resource" do
-    let(:token) { JWT.encode({ user_id: user.id }, ENV["JWT_SECRET_KEY"]) }
+    let(:token) { JWT.encode({ user_id: user.id }, Rails.application.credentials.dig(:jwt, :secret_key)) }
     let(:auth_headers) { { 'Authorization' => "Bearer #{token}" } }
     let!(:investor_wallet) { create(:wallet, walletable: user.entity, balance: 1000) }
 
@@ -61,7 +61,7 @@ RSpec.describe "Stocks", type: :request do
 
   describe "Teams resource" do
     let!(:team) { create(:team, owner: user) }
-    let(:token) { JWT.encode({ user_id: team.owner_id }, ENV["JWT_SECRET_KEY"]) }
+    let(:token) { JWT.encode({ user_id: team.owner_id }, Rails.application.credentials.dig(:jwt, :secret_key)) }
     let(:auth_headers) { { 'Authorization' => "Bearer #{token}" } }
     let!(:investor_wallet) { create(:wallet, walletable: team.entity, balance: 1000) }
 
