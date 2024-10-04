@@ -69,7 +69,7 @@ group :test do
 end
 
 gem "bcrypt", "~> 3.1", ">= 3.1.20"
-gem "jwt", "~> 2.9", ">= 2.9.0"
+gem "jwt", "~> 2.9"
 gem "rack-cors", "~> 2.0", ">= 2.0.2"
 gem "active_model_serializers", "~> 0.10.14"
 
