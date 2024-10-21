@@ -54,7 +54,7 @@ group :development, :test do
   gem "rspec-rails", "~> 7.0", ">= 7.0.1"
   gem "shoulda-matchers", "~> 6.4", ">= 6.4.0"
   gem "dotenv-rails", "~> 3.1", ">= 3.1.4"
-  gem "faker", "~> 3.4", ">= 3.4.2"
+  gem "faker", "~> 3.5"
 end
 
 group :development do
